@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import SplashScreen from "./src/screens/SplashScreen";
 
-
 const App: () => React$Node = () => {
   return (
     <View style = {styles.container}>
