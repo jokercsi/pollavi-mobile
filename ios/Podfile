@@ -10,6 +10,8 @@ target 'pollavi' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'pollaviTests' do
     inherit! :complete
     # Pods for testing

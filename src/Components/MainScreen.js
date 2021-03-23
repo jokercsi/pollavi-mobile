@@ -6,6 +6,7 @@ export default class MainScreen extends Component {
     return (
       <View style={styles.container}>
         <Text>MainScreen</Text>
+        
       </View>
     );
   }
