@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import {Text, View, StyleSheet } from 'react-native'
+import {Text, View, StyleSheet} from 'react-native'
 
 
-export class SignupScreen extends Component {
+export class Search extends Component {
     render(){
         return (
             <View>
                 <Text>
-                    Show Your View
+                    검색!!!!!!!!
                 </Text>
             </View>
         )
     }
 }
-export default Login&SignupScreen
+export default Search

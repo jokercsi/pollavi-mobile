@@ -10,9 +10,6 @@ export class SplashScreen extends Component {
         return (
             <View style = {styles.container}>
                 <LinearGradient colors={[ '#C64DF7','#F27875','#FFAC06', '#FFCE00' ]} locations={[0, 0.4, 0.7, 1]} useAngle={true} angle={45} angleCenter={{ x: 0.5, y: 0.5 }} style={styles.linearGradient}>
-                        <View style = {styles.logo_container}>
-                        {/* <Image style={styles.logo} source ={require('../assets/images/pollaviLogo.png')} /> */}
-                        </View>
                 </LinearGradient> 
                 <LottieView source={require('../assets/images/netflix.json')} 
                     autoPlay
@@ -20,6 +17,7 @@ export class SplashScreen extends Component {
                     speed={0.5}
                     onAnimationFinish = {()=>{
                     console.log('Animation Finished!')
+                    this.props.navigation.replace("Signup");
                 }}
                 />
             </View>
