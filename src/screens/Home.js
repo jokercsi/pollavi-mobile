@@ -7,11 +7,12 @@ export class Home extends Component {
         return (
             <View>
                 <Image style={styles.logo} source ={require('../assets/images/pollavi1.png')} />
-
             </View>
         )
     }
 }
+
+
 export default Home
 
 export const styles = StyleSheet.create({
