@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
-import {Text, View, StyleSheet} from 'react-native'
+import React from 'react'
+import {Text, View, StyleSheet, SafeAreaView} from 'react-native'
+import Tags from './Tags'
 
-
-export class Recommend extends Component {
-    render(){
+const Recommend = () => {
         return (
             <View>
                 <Text>
-                    추천
+                    폴라비에서 인기있는 태그들을 확인해보세요
                 </Text>
+                <SafeAreaView> 
+                    <Tags />
+                </SafeAreaView>
+
             </View>
-        )
-    }
-}
-export default Recommend
+        );
+};
+export default Recommend;
