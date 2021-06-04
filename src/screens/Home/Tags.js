@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image,Text, ScrollView, View, StyleSheet} from 'react-native';
+import {Image, TouchableOpacity, Text, ScrollView, View, StyleSheet} from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
 import users from '../../../userList.json';
@@ -9,18 +9,15 @@ import users from '../../../userList.json';
 
 const Tags = () => {
     return (
-        // <ScrollView  horizontal>
-        //     {users.map((item, index) => (
-        //         <Text>hi</Text>
-        //     ))}
-        // </ScrollView>
     <ScrollView horizontal>
         {users.map((item, index) => (
             <View style={{width:85, padding :5}}>
                  <LinearGradient 
                      colors={['#bc2a8d','#e95950','#fccc63']}
                      style={{padding:2, borderRadius:50}}>   
-                     <Image source={{uri : item.photo}} style={styles.userImage}></Image>
+                    <TouchableOpacity>
+                         <Image source={{uri : item.photo}} style={styles.userImage}></Image>                      
+                    </TouchableOpacity>
                  </LinearGradient>
              </View>
         ))}

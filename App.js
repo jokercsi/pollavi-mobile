@@ -44,9 +44,9 @@ const TopNavigator = () => {
       <TopTab.Navigator
         tabBarOptions={{
             labelStyle: { fontSize: 12 },
-            tabStyle: { margin: 20 },
+            tabStyle: { margin: 5 },
             style: { backgroundColor: 'powderblue' },
-            inactiveTintColor: "blue", 
+            //inactiveTintColor: "blue", 
             indicatorStyle :{
                 backgroundColor:'red',
             }
