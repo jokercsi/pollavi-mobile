@@ -1,7 +1,7 @@
 import React from 'react'
 import {Text, View, StyleSheet, SafeAreaView} from 'react-native'
-import Tags from './Tags'
 import Cards from './Cards'
+
 
 const Recommend = () => {
         return (
@@ -9,9 +9,6 @@ const Recommend = () => {
                 <Text>
                     폴라비에서 인기있는 태그들을 확인해보세요
                 </Text>
-                <SafeAreaView style={styles.tags }> 
-                    <Tags/>
-                </SafeAreaView>
                 <SafeAreaView style={styles.Cards }> 
                     <Cards style={styles.Cards }/>
                 </SafeAreaView>
@@ -26,11 +23,7 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:'#fff',
     },
-    tags:{
-        flex:1,
-        backgroundColor:'#fff',
-    },
     Cards:{
-        flex:5
+        flex:1
     }
 })

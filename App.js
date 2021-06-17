@@ -3,7 +3,7 @@
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
 
 import React, {Component} from 'react';
-import {Button} from 'react-native';
+import {Button, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -12,7 +12,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 import Splash from "./src/screens/SplashScreen";
 import {SignIn,CreateAccount,Profile}  from "./src/screens/Screens";
-import Search from "./src/screens/Search";
+import Search from "./src/screens/Search/Search";
 import Alarm from "./src/screens/Alarm";
 import Post from "./src/screens/Post";
 
@@ -49,11 +49,14 @@ const TopNavigator = () => {
             //inactiveTintColor: "blue", 
             indicatorStyle :{
                 backgroundColor:'red',
-            }
+            },
         }}
         >
         {/*탭에 아이콘 넣기 =  https://stackoverflow.com/questions/64473098/add-icons-in-creatematerialtoptabnavigator-reactnavigation-5 */}
-            <TopTab.Screen name="Recommend" component={RecommendScreen} />
+            <TopTab.Screen 
+                name="Recommend" 
+                component={RecommendScreen} 
+            />
             <TopTab.Screen name="Following" component={FollowingScreen} />
             <TopTab.Screen name="Group" component={GroupScreen} />
       </TopTab.Navigator>
@@ -85,7 +88,7 @@ export default () => {
     React.useEffect(() =>{
         setTimeout(()=> {
             setIsLoading(false);
-        }, 3000)
+        }, 10)
     }, []);
 
     // Splash화면 재생
@@ -114,12 +117,20 @@ export default () => {
     )
 };
 
-const HomeStackScreen = (
+function LogoTitle() {
+    return (
+      <Image
+        style={{ width: 100, height: 90 }}
+        source={require('./src/assets/images/pollavi1.png')}
+      />
+    );
+  }
 
-) => (
+const HomeStackScreen = () => (
     <HomeStack.Navigator>
-        <HomeStack.Screen name="Home" component={TopNavigator} 
+        <HomeStack.Screen name="Pollavi" component={TopNavigator} 
         options={{
+            headerTitle: props => <LogoTitle {...props} />,
             headerRight: () => (
               <Button
                 onPress={() => alert('This is a button!')}
