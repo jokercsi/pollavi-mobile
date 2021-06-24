@@ -3,9 +3,12 @@
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
 
 import React, {Component} from 'react';
-import {Button, Image} from 'react-native';
+import {Button,View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+
+//FontAwesome 아이콘 다운받기
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -45,7 +48,7 @@ const TopNavigator = () => {
         tabBarOptions={{
             labelStyle: { fontSize: 12 },
             tabStyle: { margin: 5 },
-            style: { backgroundColor: 'powderblue' },
+            style: { },
             //inactiveTintColor: "blue", 
             indicatorStyle :{
                 backgroundColor:'red',
@@ -120,7 +123,7 @@ export default () => {
 function LogoTitle() {
     return (
       <Image
-        style={{ width: 100, height: 90 }}
+        style={{ width: 130, height: 110 }}
         source={require('./src/assets/images/pollavi1.png')}
       />
     );
@@ -130,13 +133,20 @@ const HomeStackScreen = () => (
     <HomeStack.Navigator>
         <HomeStack.Screen name="Pollavi" component={TopNavigator} 
         options={{
+            headerStyle:{  
+                height: 80,
+                elevation: 0,
+                shadowOpacity: 0,
+                borderBottomWidth: 0,},
             headerTitle: props => <LogoTitle {...props} />,
             headerRight: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="DM"
-                color="#000"
-              />
+                <View style={{marginRight:10}}>
+                    <Button
+                        onPress={() => alert('This is a button!')}
+                        title="message"
+                        color="#000" style={ [{paddingHorizontal:15}] }
+                        />
+                </View>
             ),
           }}
         />
