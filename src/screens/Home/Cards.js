@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image,Text,Button, RefreshControl, FlatList, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {Image, ImageBackground ,Text,Button, RefreshControl, FlatList, View, TouchableOpacity, StyleSheet} from 'react-native';
 
-
+//아이콘
+import Ionicons from '../../../node_modules/react-native-vector-icons/Ionicons';
 
 import Tags from './Tags'
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,6 +20,9 @@ import { useMemo } from 'react/cjs/react.production.min';
 //올리면 다 같이 올리기, 꼭 보기
 //https://www.youtube.com/watch?v=r7f03VJ8bDE
 
+//animated scroll flatlist 만들기
+//https://www.youtube.com/watch?v=F8x-dyIsrJ8
+
 
 const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -34,8 +38,6 @@ const Cards = () => {
 
     return (
         <View style={styles.container}>
-
-          
                 <FlatList
                     numColumns= {2}
                     contentContainerStyle={{
@@ -53,22 +55,34 @@ const Cards = () => {
                     renderItem={({ item }) => (
                         <View style={styles.post}>
                             <TouchableOpacity key={item.name} >
-                                <View style={{ zIndex: 1, position: "absolute"}}>
-                                <Text> {item.name} </Text>
-                                <Button 
-                                    onPress={() => alert('This is a button!')}
-                                    title="..."
-                                    color="#000"
-                                    style={{}}
-                                />
-                                </View>
-                                <Image 
-                                    style={{
-                                        alignSelf:'stretch',
-                                        height:150,
-                                        borderRadius:10
-                                    }}
-                                    source={{uri :item.photo}}/>
+                                <ImageBackground
+                                    source={{uri :item.photo}}
+                                    style={{alignSelf:'stretch',height:250}}
+                                    imageStyle={{borderRadius:10}}>
+                                        <View style={{flexDirection:"column", flex:1, justifyContent:'center'}}>
+                                            <View style={{flex:0.5}}>
+                                                <View style={{ alignSelf: "flex-end"}}>
+                                                <Ionicons.Button 
+                                                    size={25} 
+                                                    name="ellipsis-horizontal-sharp"
+                                                    color="#fff"
+                                                    backgroundColor="transparent"
+                                                    onPress={() => alert('This is a button!')}/>
+                                                </View>
+                                            </View>
+                                            <View style={{flex:0.5}}>
+                                                <View style={{flex:0.4}}>
+                                                    <Text> Tag </Text>
+                                                </View>
+                                                <View style={{flex:0.4}}>
+                                                    <Text> {item.name} </Text>
+                                                </View>
+                                                <View style={{flex:0.2}}>
+                                                    <Text> {item.name} </Text>
+                                                </View>
+                                            </View>
+                                        </View>
+                                </ImageBackground>
                             </TouchableOpacity>
                         </View>
                     )}
@@ -89,7 +103,6 @@ const styles = StyleSheet.create({
 
     post:{
         flex:0.5,
-        backgroundColor:'#f0f',
         marginBottom:10,
         marginHorizontal:10,
         borderRadius: 10

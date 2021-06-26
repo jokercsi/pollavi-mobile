@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList, Text, StyleSheet, Animated, SafeAreaView } from 'react-native';
 
-import Tags from '../Home/Tags'
+import Tags from './Tags'
 
 const data = [
   1,
@@ -31,7 +31,7 @@ const data = [
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
-class AnimatedList extends React.Component {
+class Home extends React.Component {
   state = {
     isLoading: false,
     animatedValue: new Animated.Value(0),
@@ -106,8 +106,6 @@ export default class AnimatedHeader extends React.Component {
         <Text style={styles.titleText}>
         testo a caso da ridurre
         </Text>
-        
-
         </Animated.View>
       </SafeAreaView>
     );

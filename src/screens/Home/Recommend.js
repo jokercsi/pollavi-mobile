@@ -5,12 +5,9 @@ import Cards from './Cards'
 
 const Recommend = () => {
         return (
-            <View style={styles.container}>
-                <SafeAreaView style={styles.Cards}> 
-                    <Cards style={styles.Cards}/>
-                </SafeAreaView>
-
-            </View>
+            <SafeAreaView style={styles.container}>
+                <Cards style={styles.Cards}/>
+            </SafeAreaView>
         );
 };
 export default Recommend;

@@ -7,9 +7,6 @@ import {Button,View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-//FontAwesome 아이콘 다운받기
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
@@ -20,6 +17,11 @@ import Alarm from "./src/screens/Alarm";
 import Post from "./src/screens/Post";
 
 import {AuthContext} from './src/Components/context';
+
+//아이콘
+import Feather from './node_modules/react-native-vector-icons/Feather';
+import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
+
 
 //Home화면 스크린(Upper Tab)
 import FollowingScreen from "./src/screens/Home/Following"
@@ -44,31 +46,48 @@ const TopTab = createMaterialTopTabNavigator();// 윗 탭 Upper Tab
 // 상단 탭 CSS = https://reactnavigation.org/docs/material-top-tab-navigator/
 const TopNavigator = () => {
     return (
-      <TopTab.Navigator
-        tabBarOptions={{
-            labelStyle: { fontSize: 12 },
-            tabStyle: { margin: 5 },
-            style: { },
-            //inactiveTintColor: "blue", 
-            indicatorStyle :{
-                backgroundColor:'red',
-            },
-        }}
-        >
-        {/*탭에 아이콘 넣기 =  https://stackoverflow.com/questions/64473098/add-icons-in-creatematerialtoptabnavigator-reactnavigation-5 */}
-            <TopTab.Screen 
-                name="Recommend" 
-                component={RecommendScreen} 
-            />
-            <TopTab.Screen name="Following" component={FollowingScreen} />
-            <TopTab.Screen name="Group" component={GroupScreen} />
-      </TopTab.Navigator>
+        <TopTab.Navigator
+            tabBarOptions={{
+                labelStyle: { fontSize: 12 },
+                tabStyle: { },
+                style: { marginHorizontal:50, backgroundColor:"#fff", shadowColor:"#fff"  },
+                //inactiveTintColor: "blue", 
+                indicatorStyle :{
+                    backgroundColor: '#36A7E7',
+                    height: '10%',
+                    borderRadius: 50,
+                    marginBottom: 8,
+                    width: '2%',
+                    left:"16%",
+                },
+            }}
+            >
+            {/*탭에 아이콘 넣기 =  https://stackoverflow.com/questions/64473098/add-icons-in-creatematerialtoptabnavigator-reactnavigation-5 */}
+                <TopTab.Screen 
+                    name="추천" 
+                    component={RecommendScreen} 
+                />
+                <TopTab.Screen name="팔로잉" component={FollowingScreen} />
+                <TopTab.Screen name="그룹" component={GroupScreen} />
+        </TopTab.Navigator>
      );
 }
 
 export default () => {
     const [isLoading, setIsLoading] = React.useState(true);
     const [userToken, setUserToken] = React.useState(null)
+
+    const MyTheme = {
+        dark: false,
+        colors: {
+          primary: 'rgb(255, 45, 85)',
+          background: 'white',
+          card: 'rgb(255, 255, 255)',
+          text: 'black',
+          border: 'rgb(199, 199, 204)',
+          notification: 'rgb(255, 69, 58)',
+        },
+      };
 
     const authContext = React.useMemo(() => {
         return{
@@ -101,10 +120,40 @@ export default () => {
 
     return(
         <AuthContext.Provider value ={authContext}>
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
             {userToken ? (
-                <Tab.Navigator>
-                    <Tab.Screen name="Home" component={HomeStackScreen} />
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
+            
+                        if (route.name === 'Home') {
+                            iconName = focused ? 'ios-home': 'ios-home-outline';
+                        } 
+                        else if (route.name === 'Search') {
+                            iconName = focused ? 'search-sharp' : 'search-outline';
+                        } 
+                        else if (route.name === 'Post') {
+                            iconName = focused ? 'ios-add-sharp' : 'ios-add-outline';
+                        } 
+                        else if (route.name === 'Alarm') {
+                            iconName = focused ? 'ios-heart-sharp' : 'ios-heart-outline';
+                        } 
+                        else if (route.name === 'Profile') {
+                            iconName = focused ? 'person-sharp' : 'person-outline';
+                        }
+            
+                        // You can return any component that you like here!
+                        return <Ionicons name={iconName} size={size} color={color} />;
+                        },
+                    })}
+                    tabBarOptions={{
+                        activeTintColor: 'black',
+                        inactiveTintColor: 'gray',
+                    }}
+                
+                >
+                    <Tab.Screen name="Home" component={HomeStackScreen}  />
                     <Tab.Screen name="Search" component={SearchStackScreen} />
                     <Tab.Screen name="Post" component={PostStackScreen} />
                     <Tab.Screen name="Alarm" component={AlarmStackScreen} />
@@ -137,15 +186,18 @@ const HomeStackScreen = () => (
                 height: 80,
                 elevation: 0,
                 shadowOpacity: 0,
-                borderBottomWidth: 0,},
+                borderBottomWidth: 0,
+            },
             headerTitle: props => <LogoTitle {...props} />,
             headerRight: () => (
                 <View style={{marginRight:10}}>
-                    <Button
+                    <Feather.Button 
+                        backgroundColor="#fff"
+                        color="#000"
+                        size={25} 
+                        name="message-square" 
                         onPress={() => alert('This is a button!')}
-                        title="message"
-                        color="#000" style={ [{paddingHorizontal:15}] }
-                        />
+                    />
                 </View>
             ),
           }}
