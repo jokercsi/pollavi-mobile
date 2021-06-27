@@ -17,7 +17,6 @@ export class SplashScreen extends Component {
                     speed={0.5}
                     onAnimationFinish = {()=>{
                     console.log('Animation Finished!');
-                    //this.props.navigation.replace("Signup");
                 }}
                 />
             </View>

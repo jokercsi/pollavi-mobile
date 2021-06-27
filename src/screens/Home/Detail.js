@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {TouchableOpacity, View,Text, StyleSheet} from 'react-native'
 
 
-const Post = ({navigation}) => {
+const Detail = ({navigation}) => {
     return (
         <View>
             <TouchableOpacity onPress={()=> navigation.navigate('Detail')} style={{backgroundColor:"#000"}}>
@@ -12,4 +12,4 @@ const Post = ({navigation}) => {
     )
 }
 
-export default Post;
+export default Detail;

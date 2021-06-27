@@ -10,17 +10,21 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-import Splash from "./src/screens/SplashScreen";
-import {SignIn,CreateAccount,Profile}  from "./src/screens/Screens";
-import Search from "./src/screens/Search/Search";
-import Alarm from "./src/screens/Alarm";
-import Post from "./src/screens/Post";
-
-import {AuthContext} from './src/Components/context';
-
 //아이콘
 import Feather from './node_modules/react-native-vector-icons/Feather';
 import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
+
+//화면
+import Splash from "./src/screens/SplashScreen";
+import {SignIn,CreateAccount,Profile}  from "./src/screens/Screens";
+import Alarm from "./src/screens/Alarm";
+import Post from "./src/screens/Post";
+
+import Search from "./src/screens/Search/Search";
+import Detail from './src/screens/Home/Detail';
+
+import {AuthContext} from './src/Components/context';
+
 
 
 //Home화면 스크린(Upper Tab)
@@ -110,7 +114,7 @@ export default () => {
     React.useEffect(() =>{
         setTimeout(()=> {
             setIsLoading(false);
-        }, 10)
+        }, 100)
     }, []);
 
     // Splash화면 재생
@@ -179,7 +183,7 @@ function LogoTitle() {
   }
 
 const HomeStackScreen = () => (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator initialRouteName="Pollavi">
         <HomeStack.Screen name="Pollavi" component={TopNavigator} 
         options={{
             headerStyle:{  
@@ -202,6 +206,7 @@ const HomeStackScreen = () => (
             ),
           }}
         />
+        <HomeStack.Screen name="Detail" component={Detail} />
     </HomeStack.Navigator>
 );
 
@@ -214,6 +219,7 @@ const SearchStackScreen = () => (
 const PostStackScreen = () => (
     <PostStack.Navigator>
         <PostStack.Screen name="Post" component={Post} />
+        <PostStack.Screen name="Detail" component={Detail} />
     </PostStack.Navigator>
 );
 

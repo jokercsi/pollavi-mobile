@@ -19,7 +19,7 @@ export const Profile = ({ navigation }) => {
 export const SignIn = ({ navigation }) => {
     const { signIn } = React.useContext(AuthContext);
         return (
-        <View>
+        <View style={{flex:1}}>
             <Text>Sign In Screen</Text>
             <Button title="Sign In" onPress={() => signIn()} />
             {/* <Button title="Sign In" onPress={() => signIn()} /> */}
@@ -33,7 +33,6 @@ export const SignIn = ({ navigation }) => {
             /> */}
         </View>
     );
-    
 }
 
 export const CreateAccount = () => {

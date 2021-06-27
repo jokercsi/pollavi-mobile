@@ -17,7 +17,7 @@
         }, 
         {
             "name": "Kim",
-            "photo": "https://randomuser.me/api/portraits/men/52.jpg"
+            "photo": "https://media.contentapi.ea.com/content/dam/battlefield/battlefield-2042/homepage/common/bf-2042-section-bg-homepage-hero-keyart-xl.jpg.adapt.320w.jpg"
         }, 
         {
             "name": "Kim",
@@ -29,19 +29,23 @@
         },    
         {
             "name": "Kim",
-            "photo": "https://randomuser.me/api/portraits/men/52.jpg"
+            "photo": "https://img.seoul.co.kr/img/upload/2018/07/01/SSI_20180701135517.jpg"
+        }, 
+        {
+            "name": "Kim",
+            "photo": "https://thumbs-prod.si-cdn.com/P4Smi9MthEBXH7pdW8Y-bvwR6ts=/1072x720/filters:no_upscale()/https://public-media.si-cdn.com/filer/04/8e/048ed839-a581-48af-a0ae-fac6fec00948/gettyimages-168346757_web.jpg"
+        }, 
+        {
+            "name": "Kim",
+            "photo": "https://post-phinf.pstatic.net/MjAxOTExMjVfMjU1/MDAxNTc0Njc3Nzk4Nzcw.1_a7aqM029cq54_GfdvOGNTODtsh3Bmi1YGsSzoCD_sg.3-S6Oxrc_mELA1Rd2eN5dYJeDFz80_YOQT-_m1NGhLQg.JPEG/one-piece-07.jpg?type=w1200"
         }, 
         {
             "name": "Kim",
             "photo": "https://randomuser.me/api/portraits/men/52.jpg"
-        }, 
+        },
         {
             "name": "Kim",
-            "photo": "https://randomuser.me/api/portraits/men/52.jpg"
-        }, 
-        {
-            "name": "Kim",
-            "photo": "https://randomuser.me/api/portraits/men/52.jpg"
+            "photo": "https://chic-line.com/web/product/big/202104/e9032e4339e6d1876a4a97c05d7b1d47.jpg"
         }
 
 ]

@@ -5,10 +5,11 @@ import {Image, ImageBackground ,Text,Button, RefreshControl, FlatList, View, Tou
 import Ionicons from '../../../node_modules/react-native-vector-icons/Ionicons';
 
 import Tags from './Tags'
-import LinearGradient from 'react-native-linear-gradient';
+import Detail from './Detail'
 import users from '../../../userList.json';
 import sponser from '../../../sponserList.json';
-import { useMemo } from 'react/cjs/react.production.min';
+
+
 
 //카드 만들기 참고자료
 //https://www.youtube.com/watch?v=iMCM1NceGJY
@@ -52,9 +53,10 @@ const Cards = () => {
                       }
                     //스토리 부분 + 광고 
                     ListHeaderComponent={Tags} 
+                    keyExtractor={(item, i) => i}
                     renderItem={({ item }) => (
                         <View style={styles.post}>
-                            <TouchableOpacity key={item.name} >
+                            <TouchableOpacity key={item.name}   onPress={() => navigate('Detail')} >
                                 <ImageBackground
                                     source={{uri :item.photo}}
                                     style={{alignSelf:'stretch',height:250}}
