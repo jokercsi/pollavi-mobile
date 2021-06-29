@@ -15,7 +15,7 @@ const Tags = () => {
             몸에좋은채소 님,{"\n"}폴라비에서 인기있는 태그들을 확인해보세요
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {users.map((item, index) => (
+            {users.map((item) => (
                 <View style={{width:95,height:130, padding :5, marginHorizontal:5}}>
                     <LinearGradient 
                         colors={['#C64DF7','#C64DF7','#C64DF7']}

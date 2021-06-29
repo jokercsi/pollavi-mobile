@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
-import {TouchableOpacity, View,Text, StyleSheet} from 'react-native'
+import {TouchableOpacity, View,Text,Image, StyleSheet} from 'react-native'
 
 
-const Detail = ({navigation}) => {
+const Detail = ({route}) => {
+    const [item, setitem] = React.useState(null);
+    const [photo, setphoto] = React.useState(null);
+
+
+    React.useEffect(() => {
+        let { item } = route.params;
+
+        setitem(item.name)
+        setphoto(item.photo)
+    })
+
     return (
         <View>
-            <TouchableOpacity onPress={()=> navigation.navigate('Detail')} style={{backgroundColor:"#000"}}>
-                <Text>asdfsdafdasgsafg</Text>
+            <TouchableOpacity onPress={()=> alert("hi")} style={{backgroundColor:"blue"}}>
+                <Text style={{color:"white"}}>{item}</Text>
+                <Text style={{color:"white"}}>{photo}</Text>
             </TouchableOpacity>
         </View>
     )

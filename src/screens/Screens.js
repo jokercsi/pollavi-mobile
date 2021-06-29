@@ -3,18 +3,7 @@ import {Text, View, StyleSheet, Button } from 'react-native'
 
 import {AuthContext} from '../Components/context';
 
-export const Profile = ({ navigation }) => {
-    const { signOut } = React.useContext(AuthContext);
-  
-    return (
-      <View>
-        <Text>Profile Screen</Text>
-        <Button title="Drawer" onPress={() => navigation.toggleDrawer()} />
-        <Button title="Sign Out" onPress={() => signOut()} />
-      </View>
-    );
-};
-
+//https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1417s
 
 export const SignIn = ({ navigation }) => {
     const { signIn } = React.useContext(AuthContext);
@@ -25,12 +14,8 @@ export const SignIn = ({ navigation }) => {
             {/* <Button title="Sign In" onPress={() => signIn()} /> */}
             <Button
                 title="Create Account"
-                onPress={() => alert("to do")}
-            />
-            {/* <Button
-                title="Create Account"
                 onPress={() => navigation.push("CreateAccount")}
-            /> */}
+            />
         </View>
     );
 }
@@ -44,3 +29,14 @@ export const CreateAccount = () => {
         </View>
     );
   };
+
+export const Profile = ({ navigation }) => {
+    const { signOut } = React.useContext(AuthContext);
+  
+    return (
+      <View>
+        <Text>프로필</Text>
+        <Button title="Sign Out" onPress={() => signOut()} />
+      </View>
+    );
+};

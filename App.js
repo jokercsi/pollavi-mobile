@@ -16,7 +16,7 @@ import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
 
 //화면
 import Splash from "./src/screens/SplashScreen";
-import {SignIn,CreateAccount,Profile}  from "./src/screens/Screens";
+import {SignIn, CreateAccount, Profile}  from "./src/screens/Screens";
 import Alarm from "./src/screens/Alarm";
 import Post from "./src/screens/Post";
 
@@ -78,6 +78,7 @@ const TopNavigator = () => {
 }
 
 export default () => {
+    //비밀번호(토큰)에 해당하는 부분 
     const [isLoading, setIsLoading] = React.useState(true);
     const [userToken, setUserToken] = React.useState(null)
 
@@ -128,6 +129,9 @@ export default () => {
             {userToken ? (
                 <Tab.Navigator
                     screenOptions={({ route }) => ({
+                        
+                        // bottom tab 타이틀 지우기
+                        tabBarLabel:() => {return null},
                         tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
             
@@ -154,18 +158,21 @@ export default () => {
                     tabBarOptions={{
                         activeTintColor: 'black',
                         inactiveTintColor: 'gray',
+                        //키보드 사용하면 bottom tab 안올리기
+                        keyboardHidesTabBar: true
                     }}
                 
                 >
                     <Tab.Screen name="Home" component={HomeStackScreen}  />
                     <Tab.Screen name="Search" component={SearchStackScreen} />
                     <Tab.Screen name="Post" component={PostStackScreen} />
-                    <Tab.Screen name="Alarm" component={AlarmStackScreen} />
+                    <Tab.Screen name="Alarm" component={AlarmStackScreen}/>
                     <Tab.Screen name="Profile" component={ProfileStackScreen} />
                 </Tab.Navigator>
             ) : (
                 <LoginStack.Navigator>
-                    <LoginStack.Screen name="회원가입 프로세스" component={SignIn} />
+                    <LoginStack.Screen name="Login" component={SignIn} />
+                    <LoginStack.Screen name="CreateAccount" component={CreateAccount} />
                 </LoginStack.Navigator>
             )}
         </NavigationContainer>
@@ -183,35 +190,37 @@ function LogoTitle() {
   }
 
 const HomeStackScreen = () => (
-    <HomeStack.Navigator initialRouteName="Pollavi">
-        <HomeStack.Screen name="Pollavi" component={TopNavigator} 
-        options={{
-            headerStyle:{  
-                height: 80,
-                elevation: 0,
-                shadowOpacity: 0,
-                borderBottomWidth: 0,
-            },
-            headerTitle: props => <LogoTitle {...props} />,
-            headerRight: () => (
-                <View style={{marginRight:10}}>
-                    <Feather.Button 
-                        backgroundColor="#fff"
-                        color="#000"
-                        size={25} 
-                        name="message-square" 
-                        onPress={() => alert('This is a button!')}
-                    />
-                </View>
-            ),
-          }}
+    <HomeStack.Navigator initialRouteName="Pollavi" screenOptions={{gestureEnabled: true}}>
+        <HomeStack.Screen 
+            name="Pollavi" 
+            component={TopNavigator} 
+            options={{
+                headerStyle:{  
+                    height: 80,
+                    elevation: 0,
+                    shadowOpacity: 0,
+                    borderBottomWidth: 0,
+                },
+                headerTitle: props => <LogoTitle {...props} />,
+                headerRight: () => (
+                    <View style={{marginRight:10}}>
+                        <Feather.Button 
+                            backgroundColor="#fff"
+                            color="#000"
+                            size={25} 
+                            name="message-square" 
+                            onPress={() => alert('This is a button!')}
+                        />
+                    </View>
+                ),
+            }}
         />
         <HomeStack.Screen name="Detail" component={Detail} />
     </HomeStack.Navigator>
 );
 
 const SearchStackScreen = () => (
-    <SearchStack.Navigator>
+    <SearchStack.Navigator headerMode="false">
         <SearchStack.Screen name="Search" component={Search} />
     </SearchStack.Navigator>
 );
@@ -224,8 +233,8 @@ const PostStackScreen = () => (
 );
 
 const AlarmStackScreen = () => (
-    <AlarmStack.Navigator>
-        <AlarmStack.Screen name="Alarm" component={Alarm} />
+    <AlarmStack.Navigator >
+        <AlarmStack.Screen name="Alarm" component={Alarm} options={{ title: '알람' }} />
     </AlarmStack.Navigator>
 );
 
@@ -233,11 +242,4 @@ const ProfileStackScreen = () => (
     <ProfileStack.Navigator>
         <ProfileStack.Screen name="Profile" component={Profile} />
     </ProfileStack.Navigator>
-);
-
-const LoginStackScreen = () => (
-    <LoginStack.Navigator >
-        <LoginStack.Screen name="Splash" component={Splash} />
-        <LoginStack.Screen name="SignIn" component={SignIn} />
-    </LoginStack.Navigator>
 );

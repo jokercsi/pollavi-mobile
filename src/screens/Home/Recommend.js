@@ -53,7 +53,7 @@ const Recommend = ({navigation}) => {
                         keyExtractor={(item, i) => i}
                         renderItem={({ item }) => (
                             <View style={styles.post}>
-                                <TouchableOpacity key={item.name}   onPress={() => navigation.navigate('Detail')} >
+                                <TouchableOpacity key={item.name}  onPress={() => navigation.navigate('Detail', {item})} >
                                     <ImageBackground
                                         source={{uri :item.photo}}
                                         style={{alignSelf:'stretch',height:250}}
