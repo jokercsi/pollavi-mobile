@@ -16,7 +16,7 @@ import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
 
 //화면
 import Splash from "./src/screens/SplashScreen";
-import {SignIn, CreateAccount, Profile}  from "./src/screens/Screens";
+import {ToS, SignIn, CreateAccount, Profile}  from "./src/screens/Login";
 import Alarm from "./src/screens/Alarm";
 import Post from "./src/screens/Post";
 
@@ -78,7 +78,7 @@ const TopNavigator = () => {
 }
 
 export default () => {
-    //비밀번호(토큰)에 해당하는 부분 
+    //비밀번호(토큰)에 해당하는 부분 비밀번호 있으면 null 
     const [isLoading, setIsLoading] = React.useState(true);
     const [userToken, setUserToken] = React.useState(null)
 
@@ -171,6 +171,7 @@ export default () => {
                 </Tab.Navigator>
             ) : (
                 <LoginStack.Navigator>
+                    <LoginStack.Screen name="ToS" component={ToS} />
                     <LoginStack.Screen name="Login" component={SignIn} />
                     <LoginStack.Screen name="CreateAccount" component={CreateAccount} />
                 </LoginStack.Navigator>
