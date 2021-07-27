@@ -3,7 +3,7 @@
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
 
 import React, {Component} from 'react';
-import {Button,View, Image} from 'react-native';
+import {Button, View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -16,7 +16,7 @@ import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
 
 //화면
 import Splash from "./src/screens/SplashScreen";
-import {ToS, SignIn, CreateAccount, Profile}  from "./src/screens/Login";
+import {ToS, SignIn, CreateAccount, Profile, Username, Email, Password}  from "./src/screens/Login";
 import Alarm from "./src/screens/Alarm";
 import Post from "./src/screens/Post";
 
@@ -54,7 +54,7 @@ const TopNavigator = () => {
             tabBarOptions={{
                 labelStyle: { fontSize: 12 },
                 tabStyle: { },
-                style: { marginHorizontal:50, backgroundColor:"#fff", shadowColor:"#fff"  },
+                style: { marginHorizontal:50, backgroundColor:"#fff", shadowColor:"#fff", elevation: 0,  shadowOpacity: 0, },
                 //inactiveTintColor: "blue", 
                 indicatorStyle :{
                     backgroundColor: '#36A7E7',
@@ -115,7 +115,7 @@ export default () => {
     React.useEffect(() =>{
         setTimeout(()=> {
             setIsLoading(false);
-        }, 100)
+        }, 1000)
     }, []);
 
     // Splash화면 재생
@@ -170,10 +170,18 @@ export default () => {
                     <Tab.Screen name="Profile" component={ProfileStackScreen} />
                 </Tab.Navigator>
             ) : (
-                <LoginStack.Navigator>
-                    <LoginStack.Screen name="ToS" component={ToS} />
+                <LoginStack.Navigator      
+                    initialRouteName='ToS'
+                    screenOptions={{
+                    headerStyle: { elevation: 0 },
+                    cardStyle: { backgroundColor: '#fff' }
+                }}>
+                    <LoginStack.Screen name="ToS" component={ToS} options={{headerShown: false}}/>
                     <LoginStack.Screen name="Login" component={SignIn} />
                     <LoginStack.Screen name="CreateAccount" component={CreateAccount} />
+                    <LoginStack.Screen name="Email" component={Email} options={{headerTitle: false}}/>
+                    <LoginStack.Screen name="Password" component={Password} options={{headerTitle: false}}/>
+                    <LoginStack.Screen name="Username" component={Username} options={{headerTitle: false}}/>
                 </LoginStack.Navigator>
             )}
         </NavigationContainer>

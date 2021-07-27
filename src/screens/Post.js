@@ -6,7 +6,7 @@ const Post = ({navigation}) => {
     return (
         <View>
             <TouchableOpacity onPress={()=> navigation.navigate('Detail')} style={{backgroundColor:"#000"}}>
-                <Text>asdfsdafdasgsafg</Text>
+                <Text>jkladfz</Text>
             </TouchableOpacity>
         </View>
     )

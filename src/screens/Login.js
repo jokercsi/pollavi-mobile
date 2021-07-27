@@ -1,22 +1,66 @@
 import React from 'react'
-import {Text, View, StyleSheet, Button } from 'react-native'
+import {useState} from "react";
+import {Text, View, StyleSheet, Button, ImageBackground, TouchableOpacity ,TextInput } from 'react-native'
 
 import {AuthContext} from '../Components/context';
+
+//체크박스 참고자료
+//https://www.youtube.com/watch?v=6VYQLa8OyMw
+import CheckBox from '@react-native-community/checkbox';
+import { Input } from 'react-native-elements/dist/input/Input';
 
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1417s
 
 // Terms of Service
 export const ToS = ({ navigation }) => {
+    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <View style={{flex:1 , flexDirection:"column"}}>
-            <View style={styles.tosImage}>
+            <View style={styles.tosHeader}>
+                <ImageBackground
+                    style={{ resizeMode:"cover" , flex: 1, justifyContent: "center" }}
+                    source={require('../assets/images/ToS.png')}
+                />
+            </View>
+            <View style={styles.tosContent}>
+                <Text style={styles.tosText}>당신의 모든 생각,{"\n"}폴라비와 함께</Text>
+                <View style={styles.tosCheckBoxContainer}>
+                    <CheckBox
+                        tintColors={{ true: '#C64DF7', false: '#D9D8D8' }}
+                        disabled={false}
+                        value={toggleCheckBox}
+                        onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                    />
+                    <Text style={[styles.tosCheckBoxText, {fontWeight:"bold"}]}>약관 전체 동의</Text>
+                </View>
+                <View style={styles.tosCheckBoxContainer}>
+                    <CheckBox
+                        boxType={'circle'}
+                        tintColors={{ true: '#C64DF7', false: '#D9D8D8'}}
+                        disabled={false}
+                        value={toggleCheckBox}
+                        onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                    />
+                    <Text style={styles.tosCheckBoxText}>이용 약관 동의 (필수)</Text>
+                </View>
+                <View style={styles.tosCheckBoxContainer}>
+                    <CheckBox
+                        tintColors={{ true: '#C64DF7', false: '#D9D8D8' }}
+                        disabled={false}
+                        value={toggleCheckBox}
+                        onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                    />
+                    <Text style={styles.tosCheckBoxText}>개인 정보 수집 및 이용동의 (필수)</Text>
+                </View>
 
             </View>
-            <View style={styles.tosText}>
-                <Text>당신의 모든 생각, 폴라비와 함께</Text>
-            </View>
-            <View style={styles.tosButton}>
-                <Button title="동의하고 시작" onPress={() => navigation.navigate('Login')} />
+            <View style={styles.tosFooter}>
+                <TouchableOpacity 
+                    style={[styles.loginButton, {backgroundColor:toggleCheckBox ? '#C64DF7' : '#D9D8D8'}]} 
+                    onPress={() => navigation.navigate('Login')}
+                    disabled={!toggleCheckBox}>
+                    <Text style={styles.loginButtonText}>다음</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -33,11 +77,111 @@ export const SignIn = ({ navigation }) => {
                 <Button title="Sign In" onPress={() => signIn()} />
                 <Button
                     title="Create Account"
-                    onPress={() => navigation.push("CreateAccount")}/>
+                    onPress={() => navigation.push("Email")}/>
             </View>
         </View>
     );
 }
+
+export const Email = ({ navigation }) => {
+    const [text, setText] = useState('');
+    return (
+        <View style={{flex:1}}>
+            <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
+                <Text style={styles.loginTitle}>이메일을 입력해주세요</Text>
+                <Text style={styles.loginSubtitle}>로그인 및 회원가입에 필요합니다</Text>
+            </View>
+            <View style={{flex:3.5}}>
+                <TextInput
+                    style={styles.input}
+                    placeholder='welcome@pollavi.com'
+                    autoCapitalize="none"
+                    placeholderTextColor='gray'
+                    textContentType={'emailAddress'}
+                    underlineColorAndroid={'transparent'}
+                    maxLength={40}
+                    onChangeText={text => setText(text)}
+                    defaultValue={text}
+                />
+            </View>
+            <View style={{flex:1}}>
+                <TouchableOpacity
+                    style={[styles.loginButton, , {backgroundColor:text ? '#C64DF7' : '#D9D8D8'}]} 
+                    onPress={() => navigation.push("Password")}
+                    disabled={!text}>
+                    <Text style={styles.loginButtonText}>확인</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
+
+export const Password = ({ navigation }) => {
+    const [text, setText] = useState('');
+    return (
+        <View style={{flex:1}}>
+            <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
+                <Text style={styles.loginTitle}>비밀번호을 입력해주세요</Text>
+                <Text style={styles.loginSubtitle}>대문자 어쩌고 저쩌고 조합</Text>
+            </View>
+            <View style={{flex:3.5}}>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Password'
+                    autoCapitalize="none"
+                    placeholderTextColor='gray'
+                    underlineColorAndroid={'transparent'}
+                    maxLength={40}
+                    textContentType={'password'}
+                    secureTextEntry={true}
+                    onChangeText={text => setText(text)}
+                    defaultValue={text}
+                />
+            </View>
+            <View style={{flex:1}}>
+                <TouchableOpacity
+                    style={[styles.loginButton, , {backgroundColor:text ? '#C64DF7' : '#D9D8D8'}]} 
+                    onPress={() => navigation.push("Username")}
+                    disabled={!text}>
+                    <Text style={styles.loginButtonText}>확인</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
+
+export const Username = ({ navigation }) => {
+    const [text, setText] = useState('');
+    return (
+        <View style={{flex:1}}>
+            <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
+                <Text style={styles.loginTitle}>닉네임을 정해주세요</Text>
+                <Text style={styles.loginSubtitle}>대문자 어쩌고 저쩌고 조합 , 20자 이내</Text>
+            </View>
+            <View style={{flex:3.5}}>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Name'
+                    autoCapitalize="none"
+                    placeholderTextColor='gray'
+                    underlineColorAndroid={'transparent'}
+                    maxLength={20}
+                    textContentType={'nickname'}
+                    onChangeText={text => setText(text)}
+                    defaultValue={text}
+                />
+            </View>
+            <View style={{flex:1}}>
+                <TouchableOpacity
+                    style={[styles.loginButton, , {backgroundColor:text ? '#C64DF7' : '#D9D8D8'}]} 
+                    onPress={() => navigation.push("CreateAccount")}
+                    disabled={!text}>
+                    <Text style={styles.loginButtonText}>확인</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    );
+};
 
 export const CreateAccount = () => {
     const { signUp } = React.useContext(AuthContext);
@@ -62,19 +206,50 @@ export const Profile = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     // tos
-    tosImage :{
+    tosHeader :{
         flex:2,
         backgroundColor:"#f22"
         
     },
-    tosText :{
+    tosContent :{
         flex:1.5,
-        backgroundColor:"#2ac"
-    },    
-    tosButton :{
+        backgroundColor:"#FFF"
+    },  
+    tosText :{
+        fontSize: 34,
+        fontWeight:"bold",
+        margin:10,
+        color:"#454545",
+        fontFamily:"spoqa han sans Neo"
+    }, 
+    tosCheckBoxContainer:{
+        flexDirection:"row",
+        margin:10,
+        alignItems:"center"
+    },
+    tosCheckBoxText:{
+        marginLeft: 15,
+        color: "#454545",
+        fontSize:16
+    },
+
+    tosFooter :{
         flex:0.5,
-        backgroundColor:"#ca2"
+        backgroundColor:"#fff"
     },    
+    loginButton :{
+        borderRadius:30,
+        height:50,
+        backgroundColor:"#C64DF7",
+        justifyContent:"center",
+        margin:10
+    },  
+    loginButtonText :{
+        textAlign:"center",
+        color:"#fff", 
+        fontSize:16, 
+        fontWeight:"bold"
+    },
 
     // signIn
     signInImage :{
@@ -85,7 +260,20 @@ const styles = StyleSheet.create({
     signInButton :{
         flex:1,
         backgroundColor:"#ca2"
-    }
+    },
+    input: {
+        height: 55,
+        margin: 10,
+        padding: 8,
+        color: 'black',
+        borderBottomWidth : 2.0,
+        borderBottomColor:"#C64DF7",
+        fontSize: 24,
+    },
 
+    loginTitle:{
+        fontSize:26, 
+        fontWeight:"bold"
+    }
 
 })
