@@ -173,15 +173,17 @@ export default () => {
                 <LoginStack.Navigator      
                     initialRouteName='ToS'
                     screenOptions={{
-                    headerStyle: { elevation: 0 },
-                    cardStyle: { backgroundColor: '#fff' }
-                }}>
+                        headerTitle: false,
+                        headerStyle: { elevation: 0 },
+                        cardStyle: { backgroundColor: '#fff' },
+                    }}
+                >
                     <LoginStack.Screen name="ToS" component={ToS} options={{headerShown: false}}/>
-                    <LoginStack.Screen name="Login" component={SignIn} />
-                    <LoginStack.Screen name="CreateAccount" component={CreateAccount} />
-                    <LoginStack.Screen name="Email" component={Email} options={{headerTitle: false}}/>
-                    <LoginStack.Screen name="Password" component={Password} options={{headerTitle: false}}/>
-                    <LoginStack.Screen name="Username" component={Username} options={{headerTitle: false}}/>
+                    <LoginStack.Screen name="Login" component={SignIn}  />
+                    <LoginStack.Screen name="CreateAccount" component={CreateAccount}  />
+                    <LoginStack.Screen name="Email" component={Email} />
+                    <LoginStack.Screen name="Password" component={Password} />
+                    <LoginStack.Screen name="Username" component={Username}/>
                 </LoginStack.Navigator>
             )}
         </NavigationContainer>

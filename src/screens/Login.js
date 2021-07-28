@@ -3,11 +3,17 @@ import {useState} from "react";
 import {Text, View, StyleSheet, Button, ImageBackground, TouchableOpacity ,TextInput } from 'react-native'
 
 import {AuthContext} from '../Components/context';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 //체크박스 참고자료
 //https://www.youtube.com/watch?v=6VYQLa8OyMw
 import CheckBox from '@react-native-community/checkbox';
-import { Input } from 'react-native-elements/dist/input/Input';
+
+
+//프로필 사진 업로드하기
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+
+
 
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1417s
 
@@ -71,13 +77,24 @@ export const SignIn = ({ navigation }) => {
         return (
         <View style={{flex:1, flexDirection:"column"}}>
             <View style={styles.signInImage}>
-                <Text>Sign In Screen</Text>
+                <ImageBackground
+                    style={{ resizeMode:"cover" , flex: 1,  margin:50  }}
+                    source={require('../assets/images/pollavi1.png')}
+                >
+                    <Text style={{textAlign:"center", fontWeight:"bold", fontSize:18, color:"#090240"}}>Show Your View</Text>
+                </ImageBackground>
             </View>
             <View style={styles.signInButton}>
-                <Button title="Sign In" onPress={() => signIn()} />
-                <Button
-                    title="Create Account"
-                    onPress={() => navigation.push("Email")}/>
+                <TouchableOpacity
+                    style={styles.loginButton} 
+                    onPress={() => signIn()}>
+                    <Text style={styles.loginButtonText}>로그인</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.loginButton} 
+                    onPress={() => navigation.push("Email")}>
+                    <Text style={styles.loginButtonText}>회원가입</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
@@ -102,6 +119,7 @@ export const Email = ({ navigation }) => {
                     maxLength={40}
                     onChangeText={text => setText(text)}
                     defaultValue={text}
+                    keyboardType={"email-address"}
                 />
             </View>
             <View style={{flex:1}}>
@@ -118,25 +136,44 @@ export const Email = ({ navigation }) => {
 
 export const Password = ({ navigation }) => {
     const [text, setText] = useState('');
+    const [hidePass, setHidePass] = useState(true);
+
     return (
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
                 <Text style={styles.loginTitle}>비밀번호을 입력해주세요</Text>
-                <Text style={styles.loginSubtitle}>대문자 어쩌고 저쩌고 조합</Text>
+                <Text style={styles.loginSubtitle}>최소 8자리 이상 : 영어 대문자, 소문자, 숫자, 특수문자 중 3종류 조합</Text>
             </View>
-            <View style={{flex:3.5}}>
+            <View style={{flex:3.5, flexDirection: 'row',}}>
                 <TextInput
-                    style={styles.input}
+                    style={{
+                        flex:6,
+                        height: 55,
+                        marginLeft: 10,
+                        paddingLeft: 8,
+                        color: 'black',
+                        borderBottomWidth : 2.0,
+                        borderBottomColor:"#C64DF7",
+                        fontSize: 24,
+                    }}
                     placeholder='Password'
                     autoCapitalize="none"
                     placeholderTextColor='gray'
                     underlineColorAndroid={'transparent'}
                     maxLength={40}
                     textContentType={'password'}
-                    secureTextEntry={true}
+                    secureTextEntry={hidePass ? true : false}
                     onChangeText={text => setText(text)}
                     defaultValue={text}
                 />
+                <View style={{flex:1, marginRight: 10, borderBottomWidth:2.0, borderBottomColor:"#C64DF7",height: 55, justifyContent:"center", alignItems:"center"}}>
+                    <Icon
+                        name={hidePass ? 'eye-slash' : 'eye'}
+                        size={20}
+                        color="grey"
+                        onPress={() => setHidePass(!hidePass)}
+                    />
+                </View>
             </View>
             <View style={{flex:1}}>
                 <TouchableOpacity
@@ -156,7 +193,7 @@ export const Username = ({ navigation }) => {
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
                 <Text style={styles.loginTitle}>닉네임을 정해주세요</Text>
-                <Text style={styles.loginSubtitle}>대문자 어쩌고 저쩌고 조합 , 20자 이내</Text>
+                <Text style={styles.loginSubtitle}>8자 이내로 설정해주세요</Text>
             </View>
             <View style={{flex:3.5}}>
                 <TextInput
@@ -185,10 +222,27 @@ export const Username = ({ navigation }) => {
 
 export const CreateAccount = () => {
     const { signUp } = React.useContext(AuthContext);
+
     return (
-        <View>
-            <Text>Create Account Screen</Text>
-            <Button title="Sign Up" onPress={() => signUp()} />
+        <View style={{flex:1}}>
+            <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
+                <Text style={styles.loginTitle}>프로필을 완성해주세요</Text>
+                <Text style={styles.loginSubtitle}>거의 다 왔어요:){"\n"}프로필 사진을 업로드하여 회원가입을 완성해주세요</Text>
+            </View>
+            <View style={{flex:3.5}}>
+                <TouchableOpacity
+                    style={{width:300, height:300, borderRadius:300/2, backgroundColor:"black", alignSelf:"center"}}
+                >
+                </TouchableOpacity>
+            </View>
+            <View style={{flex:1}}>
+                <TouchableOpacity
+                    style={[styles.loginButton]} 
+                    onPress={() => signUp()}
+                >
+                    <Text style={styles.loginButtonText}>회원가입 완료하기</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
   };
@@ -254,12 +308,10 @@ const styles = StyleSheet.create({
     // signIn
     signInImage :{
         flex:1,
-        backgroundColor:"#f22"
-        
+        justifyContent: "center"
     },
     signInButton :{
         flex:1,
-        backgroundColor:"#ca2"
     },
     input: {
         height: 55,
@@ -269,6 +321,9 @@ const styles = StyleSheet.create({
         borderBottomWidth : 2.0,
         borderBottomColor:"#C64DF7",
         fontSize: 24,
+    },
+    inputIcon:{
+
     },
 
     loginTitle:{
