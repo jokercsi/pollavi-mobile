@@ -28,10 +28,12 @@ const wait = (timeout) => {
 const Recommend = ({navigation}) => {
     const [refreshing, setRefreshing] = React.useState(false);
 
+    //위로 올리면 리프레쉬
     const onRefresh = React.useCallback(() => {
       setRefreshing(true);
       wait(2000).then(() => setRefreshing(false));
     }, []);
+
 
         return (
             <SafeAreaView style={styles.container}>

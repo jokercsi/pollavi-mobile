@@ -53,17 +53,20 @@ const TopNavigator = () => {
         <TopTab.Navigator
             tabBarOptions={{
                 labelStyle: { fontSize: 12 },
+                pressOpacity: 9,
+                pressColor: "white",
                 tabStyle: { },
                 style: { marginHorizontal:50, backgroundColor:"#fff", shadowColor:"#fff", elevation: 0,  shadowOpacity: 0, },
                 //inactiveTintColor: "blue", 
                 indicatorStyle :{
                     backgroundColor: '#36A7E7',
-                    height: '10%',
-                    borderRadius: 50,
                     marginBottom: 8,
-                    width: '2%',
-                    left:"16%",
+                    height: 5,
+                    width: 5,
+                    borderRadius: 5/2,
+                    left:"16%"
                 },
+                
             }}
             >
             {/*탭에 아이콘 넣기 =  https://stackoverflow.com/questions/64473098/add-icons-in-creatematerialtoptabnavigator-reactnavigation-5 */}

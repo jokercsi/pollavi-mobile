@@ -13,6 +13,7 @@ import CheckBox from '@react-native-community/checkbox';
 //프로필 사진 업로드하기
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
+import { BottomSheet, ListItem } from 'react-native-elements';
 
 
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1417s
@@ -223,6 +224,18 @@ export const Username = ({ navigation }) => {
 export const CreateAccount = () => {
     const { signUp } = React.useContext(AuthContext);
 
+    const [isVisible, setIsVisible] = useState(false);
+    const list = [
+      { title: '갤러리에서 가져오기' },
+      { title: '사진 촬용하기' },
+      {
+        title: '취소',
+        containerStyle: { backgroundColor: 'red' },
+        titleStyle: { color: 'white' },
+        onPress: () => setIsVisible(false),
+      },
+    ];
+
     return (
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
@@ -231,9 +244,22 @@ export const CreateAccount = () => {
             </View>
             <View style={{flex:3.5}}>
                 <TouchableOpacity
-                    style={{width:300, height:300, borderRadius:300/2, backgroundColor:"black", alignSelf:"center"}}
+                    style={{margin:10, padding:8, width:280, height:280, borderRadius:280/2,backgroundColor:"pink", alignSelf:"center"}}
+                    onPress={() => setIsVisible(true)} 
                 >
                 </TouchableOpacity>
+                <BottomSheet
+                    isVisible={isVisible}
+                    containerStyle={{ backgroundColor: 'rgba(0.5, 0.25, 0, 0.2)' }}
+                    >
+                    {list.map((l, i) => (
+                        <ListItem key={i} containerStyle={l.containerStyle} onPress={l.onPress}>
+                            <ListItem.Content>
+                                <ListItem.Title style={l.titleStyle}>{l.title}</ListItem.Title>
+                            </ListItem.Content>
+                        </ListItem>
+                    ))}
+                </BottomSheet>
             </View>
             <View style={{flex:1}}>
                 <TouchableOpacity
