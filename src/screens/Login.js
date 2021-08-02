@@ -11,9 +11,13 @@ import CheckBox from '@react-native-community/checkbox';
 
 
 //프로필 사진 업로드하기
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+//참고하기 https://www.reactnativeschool.com/how-to-upload-images-from-react-native
+import { launchCamera, launchImageLibrary} from 'react-native-image-picker'
 
+// bottomsheet만들기
 import { BottomSheet, ListItem } from 'react-native-elements';
+
+
 
 
 //https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1417s
@@ -224,10 +228,16 @@ export const Username = ({ navigation }) => {
 export const CreateAccount = () => {
     const { signUp } = React.useContext(AuthContext);
 
+    //프로필누르면 나오는 창
     const [isVisible, setIsVisible] = useState(false);
     const list = [
-      { title: '갤러리에서 가져오기' },
-      { title: '사진 촬용하기' },
+      { title: '갤러리에서 가져오기',
+        onPress: () => {setIsVisible(false), handleChoosePhoto()}
+
+      },
+      { title: '사진 촬용하기',
+        onPress: () => {setIsVisible(false), handleTakePhoto()}
+      },
       {
         title: '취소',
         containerStyle: { backgroundColor: 'red' },
@@ -235,6 +245,30 @@ export const CreateAccount = () => {
         onPress: () => setIsVisible(false),
       },
     ];
+
+    //사진 선택하기
+    const [photo, setPhoto] = React.useState(null);
+
+    const handleChoosePhoto = () => {
+      launchImageLibrary({ noData: true }, (response) => {
+        // console.log(response);
+        if (response) {
+          setPhoto(response);
+        }
+      });
+    };
+
+    // 사진 촬용
+    const handleTakePhoto = () => {
+        launchCamera({ noData: true }, (response) => {
+          // console.log(response);
+          if (response) {
+            setPhoto(response);
+          }
+        });
+      };
+
+    
 
     return (
         <View style={{flex:1}}>
