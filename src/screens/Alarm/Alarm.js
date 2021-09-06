@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, FlatList, Text, StyleSheet, Animated, SafeAreaView } from 'react-native';
 
-import Tags from './Home/Tags'
+import Tags from '../Home/Tags'
 
 const data = [
   1,

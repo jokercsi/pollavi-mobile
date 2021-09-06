@@ -17,7 +17,7 @@ import Ionicons from './node_modules/react-native-vector-icons/Ionicons';
 //화면
 import Splash from "./src/screens/SplashScreen";
 import {ToS, SignIn, CreateAccount, Profile, Username, Email, Password}  from "./src/screens/Login";
-import Alarm from "./src/screens/Alarm";
+import Alarm from "./src/screens/Alarm/Alarm";
 import Post from "./src/screens/Post";
 
 import Search from "./src/screens/Search/Search";
@@ -64,7 +64,7 @@ const TopNavigator = () => {
                     height: 5,
                     width: 5,
                     borderRadius: 5/2,
-                    left:"16%"
+                    left:"24%"
                 },
                 
             }}
@@ -75,7 +75,6 @@ const TopNavigator = () => {
                     component={RecommendScreen} 
                 />
                 <TopTab.Screen name="팔로잉" component={FollowingScreen} />
-                <TopTab.Screen name="그룹" component={GroupScreen} />
         </TopTab.Navigator>
      );
 }
@@ -248,12 +247,12 @@ const PostStackScreen = () => (
 
 const AlarmStackScreen = () => (
     <AlarmStack.Navigator >
-        <AlarmStack.Screen name="Alarm" component={Alarm} options={{ title: '알람' }} />
+        <AlarmStack.Screen name="Alarm" component={Alarm} options={{ title: '알림' }} />
     </AlarmStack.Navigator>
 );
 
 const ProfileStackScreen = () => (
     <ProfileStack.Navigator>
-        <ProfileStack.Screen name="Profile" component={Profile} />
+        <ProfileStack.Screen name="Profile" component={Profile} options={{headerShown: false}} />
     </ProfileStack.Navigator>
 );

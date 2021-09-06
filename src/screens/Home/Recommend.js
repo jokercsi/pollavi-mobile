@@ -58,7 +58,7 @@ const Recommend = ({navigation}) => {
                                 <TouchableOpacity key={item.name}  onPress={() => navigation.navigate('Detail', {item})} >
                                     <ImageBackground
                                         source={{uri :item.photo}}
-                                        style={{alignSelf:'stretch',height:250}}
+                                        style={{alignSelf:'stretch',height:275}}
                                         imageStyle={{borderRadius:10}}>
                                             <View style={{flexDirection:"column", flex:1, justifyContent:'center'}}>
                                                 <View style={{flex:0.5}}>
@@ -71,15 +71,17 @@ const Recommend = ({navigation}) => {
                                                         onPress={() => alert('This is a button!')}/>
                                                     </View>
                                                 </View>
-                                                <View style={{flex:0.5}}>
-                                                    <View style={{flex:0.4}}>
-                                                        <Text> Tag </Text>
+                                                <View style={{flex:0.5, flexDirection:"column", justifyContent:"flex-end", margin:10}}>
+                                                    <View style={{flexDirection:"row", flexWrap:"wrap"}}>
+                                                        { item.tags.map((tag, key)=>(
+                                                            <Text style={styles.postTag} key={key}> { tag } </Text>)
+                                                        )}
                                                     </View>
-                                                    <View style={{flex:0.4}}>
-                                                        <Text> {item.name} </Text>
+                                                    <View>
+                                                        <Text style={styles.postTitle}>{item.title}</Text>
                                                     </View>
-                                                    <View style={{flex:0.2}}>
-                                                        <Text> {item.name} </Text>
+                                                    <View>
+                                                        <Text>{item.name}</Text>
                                                     </View>
                                                 </View>
                                             </View>
@@ -95,6 +97,24 @@ const Recommend = ({navigation}) => {
 export default Recommend;
 
 const styles = StyleSheet.create({
+    postTag:{
+        paddingVertical:3,
+        paddingHorizontal:5,
+        marginRight:5,
+        marginBottom:5,
+        backgroundColor:"#C64DF7",
+        textAlign: 'center',
+        fontSize:10,
+        fontWeight:"bold",
+        color:"#fff", 
+        borderRadius:66      
+    },
+    postTitle:{
+        marginBottom:5,
+        fontSize:20,
+        fontWeight:"bold",
+        color:"#fff", 
+    },
     container:{
         flex:1,
         backgroundColor:'#fff',

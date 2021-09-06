@@ -11,20 +11,24 @@ import users from '../../../userList.json';
 const Tags = () => {
     return (
     <View>
-        <Text style={styles.tagText}>
+        <Text style={styles.welcomeTitle}>
             몸에좋은채소 님,{"\n"}폴라비에서 인기있는 태그들을 확인해보세요
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {users.map((item) => (
-                <View style={{width:95,height:130, padding :5, marginHorizontal:5}}>
-                    <LinearGradient 
-                        colors={['#C64DF7','#C64DF7','#C64DF7']}
-                        style={{padding:2.5, borderRadius:50}}>   
-                        <TouchableOpacity>
-                            <Image source={{uri : item.photo}} style={styles.userImage}></Image>                      
-                        </TouchableOpacity>
-                    </LinearGradient>
-                    <Text style={styles.tagName}>#{item.name}</Text>
+                <View style={{flex:1,width:95,height:130, padding :5, marginHorizontal:5}}>
+                    <View style={{flex:0.8}}>
+                        <LinearGradient 
+                            colors={['#C64DF7','#C64DF7','#C64DF7']}
+                            style={{padding:2.5, borderRadius:50}}>   
+                            <TouchableOpacity>
+                                <Image source={{uri : item.photo}} style={styles.userImage}></Image>                      
+                            </TouchableOpacity>
+                        </LinearGradient>
+                    </View>
+                    <View style={{flex:0.2, alignItems:"center"}}>
+                        <Text style={styles.tagTitle}>#{item.name}</Text>
+                    </View>
                 </View>
             ))}
         </ScrollView>
@@ -40,7 +44,7 @@ const Tags = () => {
 export default Tags;
 
 const styles = StyleSheet.create({
-    tagText :{
+    welcomeTitle :{
         margin:10,
         color: "#707070",
         fontSize: 16,
@@ -53,11 +57,12 @@ const styles = StyleSheet.create({
         borderColor:'#fff',
         borderRadius:50,
     },
-    tagName:{
-        margin:10,
-        padding:5,
+    tagTitle:{
+        paddingVertical:5,
+        paddingHorizontal:10,
         backgroundColor:"#C64DF7",
         textAlign: 'center',
+        fontWeight:"bold",
         fontSize:10,
         color:"#fff", 
         borderRadius:66      

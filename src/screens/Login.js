@@ -5,6 +5,11 @@ import {Text, View, StyleSheet, Button, ImageBackground, TouchableOpacity ,TextI
 import {AuthContext} from '../Components/context';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+
+import IntimacyScreen from "./Profile/Intimacy";
+import PostingScreen from "./Profile/Posting";
+import PollingScreen from "./Profile/Polling";
+
 //체크박스 참고자료
 //https://www.youtube.com/watch?v=6VYQLa8OyMw
 import CheckBox from '@react-native-community/checkbox';
@@ -16,6 +21,15 @@ import { launchCamera, launchImageLibrary} from 'react-native-image-picker'
 
 // bottomsheet만들기
 import { BottomSheet, ListItem } from 'react-native-elements';
+
+
+// TopTab
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+
+
+const TopTab = createMaterialTopTabNavigator();// 윗 탭 Upper Tab
+
 
 
 
@@ -106,7 +120,22 @@ export const SignIn = ({ navigation }) => {
 }
 
 export const Email = ({ navigation }) => {
-    const [text, setText] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
+
+    //이메일 조건에 따라 체크하는 부분
+    const checkInputEmail = () => {
+        //Check for the Email TextInput
+        if (!inputEmail.trim()) {
+            alert('Please Enter Email');
+            return;
+        }
+
+        //Checked Successfully
+        //Do whatever you want
+        alert('Success');
+        navigation.push("Password")
+    };
+    
     return (
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
@@ -122,16 +151,16 @@ export const Email = ({ navigation }) => {
                     textContentType={'emailAddress'}
                     underlineColorAndroid={'transparent'}
                     maxLength={40}
-                    onChangeText={text => setText(text)}
-                    defaultValue={text}
+                    onChangeText={inputEmail => setInputEmail(inputEmail)}
+                    defaultValue={inputEmail}
                     keyboardType={"email-address"}
                 />
             </View>
             <View style={{flex:1}}>
                 <TouchableOpacity
-                    style={[styles.loginButton, , {backgroundColor:text ? '#C64DF7' : '#D9D8D8'}]} 
-                    onPress={() => navigation.push("Password")}
-                    disabled={!text}>
+                    style={[styles.loginButton, , {backgroundColor:inputEmail ? '#C64DF7' : '#D9D8D8'}]} 
+                    onPress={checkInputEmail}
+                    disabled={!inputEmail}>
                     <Text style={styles.loginButtonText}>확인</Text>
                 </TouchableOpacity>
             </View>
@@ -194,6 +223,8 @@ export const Password = ({ navigation }) => {
 
 export const Username = ({ navigation }) => {
     const [text, setText] = useState('');
+
+
     return (
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
@@ -269,7 +300,6 @@ export const CreateAccount = () => {
       };
 
     
-
     return (
         <View style={{flex:1}}>
             <View style={{flex:1.5 , justifyContent:'center', marginHorizontal:15}}>
@@ -307,22 +337,59 @@ export const CreateAccount = () => {
     );
   };
 
+
+
+
+// 프로필 창
 export const Profile = ({ navigation }) => {
     const { signOut } = React.useContext(AuthContext);
     return (
-      <View>
-        <Text>프로필</Text>
-        <Button title="Sign Out" onPress={() => signOut()} />
+      <View style={{flex:1}}>
+        <View style={{flex:1 ,flexDirection:"row", margin:10}}>
+            <View style={{}}>
+                <TouchableOpacity style={{backgroundColor:"black", marginVertical:10, width:100,height:100, borderRadius:100/2}}>
+                </TouchableOpacity>
+                <Text>프로필 이름</Text>
+                <Text>자기소개</Text>
+            </View>
+            <View style={{margin:10, backgroundColor:"yellow"}}>
+                <Button title="sign out" onPress={() => signOut()} />
+                <Button title="프로필 편집" onPress={() => signOut()} />
+                <View style={{flexDirection:"row"}}>
+                    <Text style={{ padding:10}}>팔로워</Text>
+                    <Text style={{ padding:10}}>팔로잉</Text>
+                </View>
+            </View>
+        </View>
+        <View style={{flex:3}}>            
+            <TopTab.Navigator
+                tabBarOptions={{
+                    labelStyle: { fontSize: 12 },
+                    pressOpacity: 9,
+                    tabStyle: { },
+                    style: { },
+                    //inactiveTintColor: "blue", 
+                    indicatorStyle :{
+                    },
+                }}
+                >
+                    <TopTab.Screen name="친밀도" component={IntimacyScreen} />
+                    <TopTab.Screen name="폴링" component={PollingScreen} />
+                    <TopTab.Screen name="포스팅" component={PostingScreen} />
+            </TopTab.Navigator>
+        </View>
       </View>
     );
 };
+
+
 
 
 const styles = StyleSheet.create({
     // tos
     tosHeader :{
         flex:2,
-        backgroundColor:"#f22"
+        backgroundColor:"#fff"
         
     },
     tosContent :{
