@@ -33,8 +33,6 @@ const Recommend = ({navigation}) => {
       setRefreshing(true);
       wait(2000).then(() => setRefreshing(false));
     }, []);
-
-
         return (
             <SafeAreaView style={styles.container}>
                 <View style={styles.Card}>

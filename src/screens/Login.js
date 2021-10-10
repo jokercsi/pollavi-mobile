@@ -345,7 +345,7 @@ export const Profile = ({ navigation }) => {
     const { signOut } = React.useContext(AuthContext);
     return (
       <View style={{flex:1}}>
-        <View style={{flex:1 ,flexDirection:"row", margin:10}}>
+        <View style={{flex:1 ,flexDirection:"row", margin:10, justifyContent:"space-between"}}>
             <View style={{}}>
                 <TouchableOpacity style={{backgroundColor:"black", marginVertical:10, width:100,height:100, borderRadius:100/2}}>
                 </TouchableOpacity>
@@ -356,8 +356,14 @@ export const Profile = ({ navigation }) => {
                 <Button title="sign out" onPress={() => signOut()} />
                 <Button title="프로필 편집" onPress={() => signOut()} />
                 <View style={{flexDirection:"row"}}>
-                    <Text style={{ padding:10}}>팔로워</Text>
-                    <Text style={{ padding:10}}>팔로잉</Text>
+                    <View style={{padding:10}}>
+                        <Text>팔로워</Text>
+                        <Text>111</Text>
+                    </View>
+                    <View style={{padding:10}}>
+                        <Text>팔로잉</Text>
+                        <Text>222</Text>
+                    </View> 
                 </View>
             </View>
         </View>
@@ -372,10 +378,10 @@ export const Profile = ({ navigation }) => {
                     indicatorStyle :{
                     },
                 }}
-                >
-                    <TopTab.Screen name="친밀도" component={IntimacyScreen} />
-                    <TopTab.Screen name="폴링" component={PollingScreen} />
-                    <TopTab.Screen name="포스팅" component={PostingScreen} />
+            >
+                <TopTab.Screen name="친밀도" component={IntimacyScreen} />
+                <TopTab.Screen name="폴링" component={PollingScreen} />
+                <TopTab.Screen name="포스팅" component={PostingScreen} />
             </TopTab.Navigator>
         </View>
       </View>

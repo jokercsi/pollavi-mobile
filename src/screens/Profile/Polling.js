@@ -4,13 +4,14 @@ import {
   Text,
 } from 'react-native';
 
-const Posting = () => {
+const Polling = () => {
     return (
         <View style={{backgroundColor:"yellow"}}>
             <Text>polling</Text>
+            
         </View>    
     );
 };
   
-export default Posting;
+export default Polling;
 
