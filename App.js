@@ -26,7 +26,6 @@ import Detail from './src/screens/Home/Detail';
 import {AuthContext} from './src/Components/context';
 
 
-
 //Home화면 스크린(Upper Tab)
 import FollowingScreen from "./src/screens/Home/Following"
 import GroupScreen from "./src/screens/Home/Group"

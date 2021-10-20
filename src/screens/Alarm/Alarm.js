@@ -8,11 +8,8 @@ const DATA = [{
   }]
 }]
 
-
-
 // FlatList in Sectionlist
 const Alarm = () => {
-
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
