@@ -1,36 +1,44 @@
 import React from 'react';
-import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import { View, Image,SectionList, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
-const DATA = [{
-  country: 'Country Namefdaf', // Which will display on bottom
-  artists: [{
-    name: 'artistOne_name'
-  }]
-}]
+const DATA = [
+  {
+    title: "오늘",
+    data: ["Pizza", "Burger"],
+  },
+  {
+    title: "어제",
+    data: ["French Fries", "Onion Rings", "Fried Shrimps"]
+  },
+  {
+    title: "이번주",
+    data: ["Water", "Coke", "Beer"]
+  },
+  {
+    title: "저번달",
+    data: ["Cheese Cake", "Ice Cream"]
+  }
+];
+
+const Item = ({ title }) => (
+  <View style={styles.item}>
+    <Text style={styles.title}>{title}</Text>
+  </View>
+);
 
 // FlatList in Sectionlist
 const Alarm = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={DATA}
-        renderItem={({ item }) => (
-          <View>
-            <Text>{item.country}</Text>
-            <FlatList
-                data={DATA.artists}
-                renderItem={({ item2 }) => (
-                <View>
-                    <Text>{item2.name}</Text>
-                </View>
-                )}
-                keyExtractor={(item2, index) => index}
-            />
-          </View>
+  return(
+    <View style={styles.container}>
+      <SectionList
+        sections={DATA}
+        keyExtractor={(item, index) => item + index}
+        renderItem={({ item }) => <Item title={item} />}
+        renderSectionHeader={({ section: { title } }) => (
+          <Text style={styles.header}>{title}</Text>
         )}
-        keyExtractor={(item, index) => index}
-      /> 
-    </SafeAreaView>
+      />
+    </View>
   );
 }
 
@@ -39,17 +47,21 @@ const Alarm = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
+    paddingTop: 10,
+    marginHorizontal: 16
   },
   item: {
-    backgroundColor: '#f9c2ff',
+    backgroundColor: "#f9c2ff",
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 8
+  },
+  header: {
+    fontSize: 18,
+    backgroundColor: "#fff"
   },
   title: {
-    fontSize: 32,
-  },
+    fontSize: 15
+  }
 });
 
 export default Alarm;

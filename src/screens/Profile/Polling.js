@@ -5,22 +5,22 @@ import {
     Text,
     Image,
   } from 'react-native';
-  import { FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-  ];
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'First Item',
+  },
+  {
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    title: 'Second Item',
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+  },
+];
   
   const Item = ({ title }) => (
     <View style={styles.item}>
@@ -30,6 +30,7 @@ import {
         </View>
         <View  style={styles.topRight}>
           <Text>{title}</Text>
+          <Text>hihihi</Text>
         </View>
       </View>
       <View style={styles.middle}>
@@ -103,8 +104,7 @@ const styles = StyleSheet.create({
         flex:1.5
     }
     
-    
-    });
+});
 
 export default Polling;
 

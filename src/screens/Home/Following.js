@@ -11,14 +11,17 @@ const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'First Item',
+    tag: 'tag',
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'Second Item',
+    tag: 'tag',
   },
   {
     id: '58694a0f-3da1-471f-bd96-145571e29d72',
     title: 'Third Item',
+    tag: 'tagd',
   },
 ];
 
@@ -28,8 +31,11 @@ const Item = ({ title }) => (
       <View style={styles.topLeft}>
         <Image style={styles.profileImage}></Image>
       </View>
-      <View  style={styles.topRight}>
-        <Text>{title}</Text>
+      <View style={styles.topRight}>
+        <Text style={{fontSize:18}}>{title}</Text>
+        <View style={{alignItems:"flex-start"}}>
+          <Text style={styles.tagTitle}>tag</Text>
+        </View>
       </View>
     </View>
     <View style={styles.middle}>
@@ -89,6 +95,17 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     backgroundColor:"yellow"
   },
+
+  tagTitle:{
+    paddingVertical:5,
+    paddingHorizontal:10,
+    backgroundColor:"#C64DF7",
+    textAlign: 'center',
+    fontWeight:"bold",
+    fontSize:10,
+    color:"#fff", 
+    borderRadius:66      
+},
 
   middle:{
     flex: 8,
