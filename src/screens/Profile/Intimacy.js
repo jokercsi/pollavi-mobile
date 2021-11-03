@@ -4,7 +4,10 @@ import {
   Text,
   FlatList,
   StyleSheet,
+  Dimensions,
 } from 'react-native';
+
+import Pie from 'react-native-pie';
 
 const DATA = [
     {
@@ -23,7 +26,21 @@ const DATA = [
   
 const Item = ({ title }) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
+    <Pie
+      radius={80}
+      innerRadius={75}
+      sections={[
+        {
+          percentage: 60,
+          color: '#C64DF7',
+        },
+      ]}
+      backgroundColor="#ddd"
+    />
+    <View style={styles.gauge}>
+      <Text style={styles.title}>{title}</Text>
+      <Text>60%</Text>
+    </View>
   </View>
 );
   
@@ -32,34 +49,59 @@ const Intimacy = () => {
         <Item title={item.title} />
       );
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
+              columnWrapperStyle={{justifyContent: 'space-between'}}
                 numColumns= {2}
                 data={DATA}
+                style={styles.intimacyItem}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
                 contentContainerStyle={{
                     alignSelf: 'stretch'
                 }}
             />
+
+
         </View>    
     );
 };
   
 export default Intimacy;
 
+const {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    margin:5,
   },
   item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    flex: 1/2,
+    width: (width - 10) / 2,
+    height: (width - 10) / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 5,
+  },
+  gauge: {
+    position: 'absolute',
+    width: 100,
+    height: 160,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 32,
+    paddingVertical:5,
+    paddingHorizontal:10,
+    backgroundColor:"#C64DF7",
+    textAlign: 'center',
+    fontWeight:"bold",
+    fontSize:12,
+    color:"#fff", 
+    borderRadius:66   
   },
+  intimacyItem:{
+    padding:5
+  } 
 });
