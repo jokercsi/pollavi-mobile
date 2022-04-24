@@ -51,18 +51,6 @@ Development period
 
 ## Results
 
-### H/W
-
-- Machine
-
-<img src=images/machine1.png  width="30%"/><img src=images/machine2.png  width="30%"/>
-
-- Circuit
-
-<img src=images/circuit.png  width="60%"/>
-
-  <br>
-
 ### App
 
 |    Function    |                                                                                                               Screen                                                                                                                |
@@ -82,10 +70,13 @@ Development period
 
 <p align="center">
 
+React Navigation
 https://reactnavigation.org/
 
+React Native Icons
 https://oblador.github.io/react-native-vector-icons/
 
+Youtube Video
 https://www.youtube.com/watch?v=nQVCkqvU1uE&t=252s
 https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
 
