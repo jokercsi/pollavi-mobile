@@ -23,20 +23,9 @@ Development period
 
 ## About Project
 
-### Machine
+### Android & IOS App
 
-<img src="https://img.shields.io/badge/Language-C / C++-green?style=flat"/><img src="https://img.shields.io/badge/Platform-Arduino-blue?style=flat"/>
-
-- 앱에서 지정한 수치만큼 조미료 배출
-- 기기 내 회전체를 통해 조미료 덩어리 분쇄
-- 조미료가 직접 닿는 부분을 분리하여 위생적인 관리
-- 영점을 맞추는 스위치로 개인 그릇의 사용을 가능하게 함
-
-  <br>
-
-### Android App
-
-<img src="https://img.shields.io/badge/Language-Java-green?style=flat"/><img src="https://img.shields.io/badge/Platform-Android-blue?style=flat"/>
+<img alt="React" src ="https://img.shields.io/badge/React-#61DAFB.svg?&style=for-the-badge&logo=React&logoColor=white"/>
 
 - 사용자가 입력한 레시피 서버 DB에 저장
 - '레시피 실행'과 '바로 실행' 기능 구현
@@ -44,13 +33,15 @@ Development period
 
   <br>
 
-### BE
+### Database & Server
 
-<img src="https://img.shields.io/badge/Language-PHP-green?style=flat"/><img src="https://img.shields.io/badge/Platform-AWS-blue?style=flat"/><img src="https://img.shields.io/badge/DB-MySQL-yellow?style=flat"/>
+<img src="https://img.shields.io/badge/DB-MySQL-#4479A1?style=flat"/>
+<img src="https://img.shields.io/badge/Platform-AWS-#232F3E?style=flat"/>
+<img src="https://img.shields.io/badge/Nodejs-#339933?style=flat"/>
 
-- AWS free tier 사용
-- MySQL 사용자 DB 생성
-- 사용자가 실행한 조미료 데이터를 조미료통의 NodeMCU에게 json으로 전송
+- AWS free tier
+- MySQL User DB
+- send User information as JSON (NodeJS)
 
   <br>
 
