@@ -28,23 +28,22 @@ Development period
 ### Android & IOS App
 
 <img alt="React" src ="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-<img alt="React" src ="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img alt="Javascrip" src ="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
 
-- 사용자가 입력한 레시피 서버 DB에 저장
-- '레시피 실행'과 '바로 실행' 기능 구현
-- 실행할 조미료를 서버에 request
+- React Framwork
+- Use javascript language to make more dynamics
 
   <br>
 
 ### Database & Server
 
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
-<img src="https://img.shields.io/badge/Platform-AWS-232F3E?style=flat"/>
+<img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white"/>
 <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
 
 - AWS free tier
 - MySQL User DB
-- send User information as JSON (NodeJS)
+- Send User information as JSON (NodeJS)
 
   <br>
 
@@ -66,11 +65,16 @@ Development period
 
 ### App
 
-|     Function     |                                                                         Screen                                                                          |
-| :--------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  initial screen  | <img src="./result/Screenshot_1643170906.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170906.png" width="300" alt="캡쳐이미지"> |
-| 조미료 실행 명령 |                                                   <img src=images/android_execute.png  width="30%"/>                                                    |
-|   레시피 추가    |                                                     <img src=images/android_add.png  width="30%"/>                                                      |
+|    Function    |                                                                         Screen                                                                          |
+| :------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------: |
+| initial screen | <img src="./result/Screenshot_1643170906.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170933.png" width="300" alt="캡쳐이미지"> |
+| SignUp screen  |
+
+   <img src="./result/Screenshot_1643171077.png" width="300" alt="캡쳐이미지">
+  <img src="./result/Screenshot_1643171089.png" width="300" alt="캡쳐이미지">
+  <img src="./result/Screenshot_1643171108.png" width="300" alt="캡쳐이미지">|
+|  Home screen   | <img src="./result/Screenshot_1643170951.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170960.png" width="300" alt="캡쳐이미지"> |
+| Porfile screen |                                       <img src="./result/Screenshot_1643170985.png" width="300" alt="캡쳐이미지">                                       |
 
   <br>
 
@@ -81,13 +85,13 @@ Development period
 ### References
 
 <p align="center">
-  
- 
-  <img src="./result/Screenshot_1643170933.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643170951.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643170960.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643170985.png" width="300" alt="캡쳐이미지">
-   <img src="./result/Screenshot_1643171077.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643171089.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643171108.png" width="300" alt="캡쳐이미지">
+
+
+https://reactnavigation.org/
+
+https://oblador.github.io/react-native-vector-icons/
+
+https://www.youtube.com/watch?v=nQVCkqvU1uE&t=252s
+https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
+
 </p>
