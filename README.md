@@ -65,16 +65,12 @@ Development period
 
 ### App
 
-|    Function    |                                                                         Screen                                                                          |
-| :------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------: |
-| initial screen | <img src="./result/Screenshot_1643170906.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170933.png" width="300" alt="캡쳐이미지"> |
-| SignUp screen  |
-
-   <img src="./result/Screenshot_1643171077.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643171089.png" width="300" alt="캡쳐이미지">
-  <img src="./result/Screenshot_1643171108.png" width="300" alt="캡쳐이미지">|
-|  Home screen   | <img src="./result/Screenshot_1643170951.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170960.png" width="300" alt="캡쳐이미지"> |
-| Porfile screen |                                       <img src="./result/Screenshot_1643170985.png" width="300" alt="캡쳐이미지">                                       |
+|    Function    |                                                                                                               Screen                                                                                                                |
+| :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| initial screen |                                       <img src="./result/Screenshot_1643170906.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170933.png" width="300" alt="캡쳐이미지">                                       |
+| SignUp screen  | <img src="./result/Screenshot_1643171077.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643171089.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643171108.png" width="300" alt="캡쳐이미지"> |
+|  Home screen   |                                       <img src="./result/Screenshot_1643170951.png" width="300" alt="캡쳐이미지"> <img src="./result/Screenshot_1643170960.png" width="300" alt="캡쳐이미지">                                       |
+| Porfile screen |                                                                             <img src="./result/Screenshot_1643170985.png" width="300" alt="캡쳐이미지">                                                                             |
 
   <br>
 
@@ -85,7 +81,6 @@ Development period
 ### References
 
 <p align="center">
-
 
 https://reactnavigation.org/
 
