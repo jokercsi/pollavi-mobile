@@ -2,10 +2,6 @@
 
 ## Description
 
-Role
-
-> Front-end Development
-
 Development period
 
 > 2020.12. - 2021.08.
@@ -15,6 +11,10 @@ Development period
 - 🏅 2020 Kyung Hee University Start Up project
 
   <br>
+
+My Role In Teamwork (3 members)
+
+> Front-end Development
 
 ### Summary
 
@@ -27,6 +27,7 @@ Development period
 
 ### Android & IOS App
 
+Programming Language
 <img alt="React" src ="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
 <img alt="Javascrip" src ="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
 
@@ -76,7 +77,7 @@ https://reactnavigation.org/
 React Native Icons
 https://oblador.github.io/react-native-vector-icons/
 
-Youtube Video
+Youtube Video that I watched
 https://www.youtube.com/watch?v=nQVCkqvU1uE&t=252s
 https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
 

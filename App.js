@@ -1,7 +1,3 @@
-//reference
-//https://www.youtube.com/watch?v=nQVCkqvU1uE&t=252s
-//https://www.youtube.com/watch?v=nQVCkqvU1uE&t=1416s
-
 import React, {Component} from 'react';
 import {Button, View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
