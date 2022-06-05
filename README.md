@@ -6,11 +6,7 @@ Development period
 
 > 2020.12. - 2021.08.
 
-### Contests
 
-- 🏅 2020 Kyung Hee University Start Up project
-
-  <br>
 
 My Role In Teamwork (3 members)
 
